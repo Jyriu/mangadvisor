@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     # Base de données
     DATABASE_URL: str
 
+    # Environment
+    ENVIRONMENT: str = "development"
+
     class Config:
         case_sensitive = True
         env_file = ".env"

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
+from app.api.v1 import api_router
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -17,7 +18,7 @@ app.add_middleware(
 )
 
 # Inclusion des routers
-# from app.api.v1 import manga, anime, users, auth
+app.include_router(api_router, prefix=settings.API_V1_STR)
 
 @app.get("/")
 async def root():
